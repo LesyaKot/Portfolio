@@ -14,10 +14,11 @@ services:
       - key: WORDPRESS_DB_PASSWORD
         value: wp_pass
 
-  - type: private
+  - type: web
     name: db
     env: docker
-    image: mysql:5.7
+    docker:
+      image: mysql:5.7
     envVars:
       - key: MYSQL_ROOT_PASSWORD
         value: root
