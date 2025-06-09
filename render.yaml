@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: wordpress
+    env: docker
+    dockerfilePath: ./Dockerfile
+    autoDeploy: false
+    envVars:
+      - key: WORDPRESS_DB_HOST
+        value: db:3306
+      - key: WORDPRESS_DB_NAME
+        value: wp_db
+      - key: WORDPRESS_DB_USER
+        value: wp_user
+      - key: WORDPRESS_DB_PASSWORD
+        value: wp_pass
+
+  - type: private
+    name: db
+    env: docker
+    image: mysql:5.7
+    envVars:
+      - key: MYSQL_ROOT_PASSWORD
+        value: root
+      - key: MYSQL_DATABASE
+        value: wp_db
+      - key: MYSQL_USER
+        value: wp_user
+      - key: MYSQL_PASSWORD
+        value: wp_pass
